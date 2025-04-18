@@ -10,5 +10,5 @@
 # Visit our web to more info
 - https://darkcode21-12.github.io/eyorwebappdemo/
 
-- https://t.me/@eyor10
+
   
