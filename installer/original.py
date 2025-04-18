@@ -13,8 +13,8 @@ import customtkinter as ctk
 # Constants
 GITHUB_URL = "https://raw.githubusercontent.com/darkcode21-12/eyorapps/main/"
 FILES = {
-    "Teacher": "teacher.py",
-    "Student": "/student/student.py"
+    "Teacher": "Teacher.zip",
+    "Student": "/student.zip"
 }
 
 # Globals
