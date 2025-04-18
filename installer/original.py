@@ -12,10 +12,10 @@ import shutil
 import customtkinter as ctk
 
 # Constants
-GITHUB_URL = "https://github.com/your-org/your-project/releases/download/v1.0/"
+GITHUB_URL = "https://github.com/darkcode21-12/eyorapps/blob/main/"
 FILES = {
-    "Teacher": "installer-teacher.zip",
-    "Student": "installer-student.zip"
+    "Teacher": "teacher.py",
+    "Student": "student.py"
 }
 
 # Globals
