@@ -1,4 +1,3 @@
-# installer_app.py
 import sys
 import os
 import threading
@@ -12,10 +11,10 @@ import shutil
 import customtkinter as ctk
 
 # Constants
-GITHUB_URL = "https://github.com/darkcode21-12/eyorapps/blob/main/"
+GITHUB_URL = "https://raw.githubusercontent.com/darkcode21-12/eyorapps/main/"
 FILES = {
     "Teacher": "teacher.py",
-    "Student": "student.py"
+    "Student": "/student/student.py"
 }
 
 # Globals
@@ -101,24 +100,42 @@ class InstallerApp(ctk.CTk):
         url = GITHUB_URL + filename
         dest = os.path.join(self.download_dir.get(), filename)
 
+        # Reset progress bar
         self.progress.set(0)
         self.update_idletasks()
 
-        response = requests.get(url, stream=True)
-        total = int(response.headers.get("content-length", 0))
-        with open(dest, "wb") as f:
-            downloaded = 0
-            for chunk in response.iter_content(chunk_size=4096):
-                if chunk:
-                    f.write(chunk)
-                    downloaded += len(chunk)
-                    self.progress.set(downloaded / total)
-                    self.update_idletasks()
+        try:
+            response = requests.get(url, stream=True)
+            response.raise_for_status()  # To check if the URL was valid
 
+            # Get the total file size
+            total = int(response.headers.get("content-length", 0))
+
+            # Open the file to write the content to
+            with open(dest, "wb") as f:
+                downloaded = 0
+                # Iterate through chunks of the file and write them to the destination
+                for chunk in response.iter_content(chunk_size=4096):
+                    if chunk:
+                        f.write(chunk)
+                        downloaded += len(chunk)
+                        self.progress.set(downloaded / total)
+                        self.update_idletasks()
+
+            # After download, handle post-installation steps
+            self.post_installation()
+
+        except requests.exceptions.RequestException as e:
+            messagebox.showerror("Download Error", f"Error downloading file: {str(e)}")
+
+    def post_installation(self):
+        """Post installation steps after download completes."""
+        messagebox.showinfo("Installation Complete", "The application has been installed successfully!")
         if sys.platform.startswith("win"):
             self.create_start_menu_shortcut()
 
-        messagebox.showinfo("Done", "Installation Complete!")
+        # Optionally, run the installed application (if applicable)
+        # subprocess.Popen("your_installed_app.exe")  # Replace with actual executable name
 
     def create_start_menu_shortcut(self):
         try:
