@@ -15,7 +15,7 @@ import customtkinter as ctk
 GITHUB_URL = "https://raw.githubusercontent.com/darkcode21-12/eyorapps/main/"
 FILES = {
     "Teacher": "Teacher.zip",
-    "Student": "student/student.zip"
+    "Student": "student.zip"
 }
 
 
