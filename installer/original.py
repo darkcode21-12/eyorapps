@@ -18,10 +18,10 @@ FILES = {
     "Student": "student/student.zip"
 }
 
-# Globals
+
 theme = "light"
 
-# Splash screen
+
 class SplashScreen(ctk.CTkToplevel):
     def __init__(self, master):
         super().__init__(master)
