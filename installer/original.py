@@ -9,12 +9,13 @@ import requests
 import subprocess
 import shutil
 import customtkinter as ctk
+#import winshell
 
 # Constants
 GITHUB_URL = "https://raw.githubusercontent.com/darkcode21-12/eyorapps/main/"
 FILES = {
     "Teacher": "Teacher.zip",
-    "Student": "students/student.zip"
+    "Student": "student/student.zip"
 }
 
 # Globals
