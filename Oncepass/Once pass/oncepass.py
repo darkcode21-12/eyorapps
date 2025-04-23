@@ -6,8 +6,8 @@ import socket
 import json
 import random
 
-ctk.set_appearance_mode("System")  # Options: "System", "Dark", "Light"
-ctk.set_default_color_theme("blue")  # Options: "blue", "green", "dark-blue"
+ctk.set_appearance_mode("System")  
+ctk.set_default_color_theme("blue")  
 
 SERVER_HOST = '192.168.1.100'
 SERVER_PORT = 9000
